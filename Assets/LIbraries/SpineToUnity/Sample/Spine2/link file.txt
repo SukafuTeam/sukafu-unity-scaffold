@@ -1,0 +1,6 @@
+You can free download resource for demo Spine 2 in links below:
+
+1. Spine Boy
+https://github.com/EsotericSoftware/spine-superspineboy/tree/master/assets/spineboy
+2. gobin:
+https://github.com/EsotericSoftware/spine-workshop/tree/master/assets/goblins

@@ -1,0 +1,7 @@
+Using for Unity 4:
+- remove file SpineToUnity5.dll if exist.
+- change file name SpineToUnity4.importer to SpineToUnity4.dll
+
+Using for Unity 5:
+- remove file SpineToUnity4.dll if exist.
+- change file name SpineToUnity5.importer to SpineToUnity5.dll
