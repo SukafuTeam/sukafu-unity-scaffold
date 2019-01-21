@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 
@@ -6,9 +7,12 @@ public class SoundController : MonoBehaviour {
 
 	public static SoundController Instance;
 
-	public Dictionary<string, SoundEffect> SoundEffects = new Dictionary<string, SoundEffect>();
+	public List<SoundEffect> SoundEffects = new List<SoundEffect>();
 	public AudioSource BmgSource;
 
+	public GameObject SoundEffectPrefab;
+	protected SoundPool.Pool EffectPool;
+	
 	private float _sfxVolume;
 	public float SfxVolume
 	{
@@ -81,17 +85,7 @@ public class SoundController : MonoBehaviour {
 		LoadOptions();
 		
 		// SFX Setup
-		var sources = gameObject.GetComponentsInChildren<AudioSource>();
-		foreach(var source in sources) 
-		{
-			source.loop = false; 
-			SoundEffects[source.gameObject.name] = new SoundEffect
-				{
-					Name = source.gameObject.name,
-					OriginalVolume = source.volume,
-					AudioSource = source
-				};
-		}
+		EffectPool = new SoundPool.Pool(SoundEffectPrefab, SoundEffects.Count);
 		
 		// BMG Setup
 		if (BmgSource == null)
@@ -113,13 +107,27 @@ public class SoundController : MonoBehaviour {
 		if (Instance.MutedSfx)
 			return;
 
-		if (!Instance.SoundEffects.ContainsKey(sfx))
+		var sound = Instance.GetEffectByName(sfx);
+		if (sound == null)
 		{
 			Debug.Log("No SFX found with key: "+sfx);
 			return;
 		}
 		
-		Instance.SoundEffects[sfx].Play(Instance.SfxVolume);
+		var effect = Instance.EffectPool.Spawn(Vector3.zero, Quaternion.identity, Instance.transform);
+		var source = effect.GetComponent<AudioSource>();
+		source.clip = sound.Clip;
+		source.spatialBlend = 0;
+		source.loop = false;
+		source.volume = sound.Volume * Instance.SfxVolume;
+		source.Play();
+		Instance.StartCoroutine(Instance.DespawnDelay(effect, source.clip.length + 0.1f));
+	}
+
+	private IEnumerator DespawnDelay(GameObject obj, float time)
+	{
+		yield return new WaitForSeconds(time);
+		EffectPool.Despawn(obj);
 	}
 	
 	public static void PlaySfx(AudioClip sfx, float volume =1)
@@ -130,14 +138,13 @@ public class SoundController : MonoBehaviour {
 		if (Instance.MutedSfx)
 			return;
 		
-		var tempGameObject = new GameObject("One-Shot-Audio");
-		tempGameObject.transform.position = Vector3.zero;
-		var aSource = tempGameObject.AddComponent<AudioSource>();
-		aSource.clip = sfx;
-		aSource.spatialBlend = 0;
-		aSource.volume = Instance.SfxVolume * volume;
-		aSource.Play();
-		Destroy(tempGameObject, sfx.length);
+		var effect = Instance.EffectPool.Spawn(Vector3.zero, Quaternion.identity, Instance.transform);
+		var source = effect.GetComponent<AudioSource>();
+		source.clip = sfx;
+		source.spatialBlend = 0;
+		source.volume = Instance.SfxVolume * volume;
+		source.Play();
+		Instance.StartCoroutine(Instance.DespawnDelay(effect, source.clip.length + 0.1f));
 	}
 	
 	public static void FadeVolumeDown()
@@ -178,6 +185,11 @@ public class SoundController : MonoBehaviour {
 	}
 
 	[ContextMenu("Save Options")]
+	public void InstanceSaveOptions()
+	{
+		SaveOptions();
+	}
+	
 	public static void SaveOptions()
 	{
 		if (Instance == null)
@@ -214,7 +226,16 @@ public class SoundController : MonoBehaviour {
 
 		Instance.BmgSource.volume = Instance.BmgVolume;
 	}
-	
+
+	public SoundEffect GetEffectByName(string effectName)
+	{
+		foreach (var effect in SoundEffects)
+		{
+			if (effect.Name.Equals(effectName))
+				return effect;
+		}
+		return null;
+	}
 }
 
 
@@ -222,12 +243,6 @@ public class SoundController : MonoBehaviour {
 public class SoundEffect
 {
 	public string Name;
-	public float OriginalVolume;
-	public AudioSource AudioSource;
-
-	public void Play(float volumeModifier)
-	{
-		AudioSource.volume = OriginalVolume * volumeModifier;
-		AudioSource.Play();
-	}
+	public float Volume;
+	public AudioClip Clip;
 }

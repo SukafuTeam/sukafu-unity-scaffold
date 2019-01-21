@@ -173,7 +173,8 @@ namespace EzEditor
         {
             using (Horizontal())
             {
-                EzLabel(label);
+                if(!string.IsNullOrEmpty(label))
+                    EzLabel(label);
                 return EditorGUILayout.Slider(value, minValue, maxValue, options);
             }
         }
