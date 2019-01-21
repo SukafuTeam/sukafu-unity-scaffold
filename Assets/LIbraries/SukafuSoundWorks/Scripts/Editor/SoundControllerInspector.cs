@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using EzEditor;
@@ -20,6 +21,7 @@ public class SoundControllerInspector : Editor
 		
 		DrawBmg();
 		DrawSfx();
+		DrawButtons();
 		
 		if (GUI.changed)
 		{
@@ -99,8 +101,93 @@ public class SoundControllerInspector : Editor
 		_target.SoundEffects.Add(effect);
 
 		_newSfx = null;
-
 	}
+
+	private void DrawButtons()
+	{
+		gui.VerticalSpacer(5);
+		
+		using (gui.Horizontal())
+		{
+			if (gui.EzButton("Export"))
+				ExportSoundEffect();
+			if(gui.EzButton("Import"))
+				ImportSoundEffects();
+		}
+	}
+
+	private void ExportSoundEffect()
+	{
+		var data = new SoundEffectsData();
+		var sounds = new List<SoundEffectData>();
+		
+		EditorUtility.DisplayProgressBar("Saving configurations...", "", 0);
+		var count = _target.SoundEffects.Count;
+		for(var i=0;i<count; i++)
+		{
+			var sound = _target.SoundEffects[i];
+			EditorUtility.DisplayProgressBar("Saving configurations...", (i+1)+" of "+count, (float)i/count);
+			sounds.Add(new SoundEffectData
+			{
+				name = sound.Name,
+				volume = sound.Volume,
+				clipPath = AssetDatabase.GetAssetPath(sound.Clip)
+			});
+		}
+		data.sounds = sounds.ToArray();
+		EditorUtility.ClearProgressBar();
+
+		var json = JsonUtility.ToJson(data);
+		var path = EditorUtility.SaveFilePanel("Choose where to save your configurations", "", "sound_data.json", "json");
+		if (path.Length != 0)
+		{
+			System.IO.File.WriteAllText(path, json);
+			EditorUtility.DisplayDialog("Sucess!", "File Exported", "Ok");
+		}
+	}
+
+	private void ImportSoundEffects()
+	{
+		var path = EditorUtility.OpenFilePanel("Choose file to load configurations", "", "json");
+		if (string.IsNullOrEmpty(path))
+		{
+			return;
+		}
+
+		var json = System.IO.File.ReadAllText(path);
+		var data = JsonUtility.FromJson<SoundEffectsData>(json);
+
+		_target.SoundEffects.Clear();
+		EditorUtility.DisplayProgressBar("Loading configurations...", "", 0);
+		var count = data.sounds.Length;
+		for(var i=0;i<count;i++)
+		{
+			var sound = data.sounds[i];
+			EditorUtility.DisplayProgressBar("Loading configurations...", (i+1)+" of "+count, (float)i/count);
+			_target.SoundEffects.Add(new SoundEffect
+			{
+				Name= sound.name,
+				Volume = sound.volume,
+				Clip = (AudioClip)AssetDatabase.LoadAssetAtPath(sound.clipPath, typeof(AudioClip))
+			});
+		}
+		EditorUtility.ClearProgressBar();
+		EditorUtility.DisplayDialog("Sucess!", "File Imported", "Ok");
+	}
+}
+
+[System.Serializable]
+public class SoundEffectsData
+{
+	public SoundEffectData[] sounds;
+}
+
+[System.Serializable]
+public class SoundEffectData
+{
+	public string name;
+	public float volume;
+	public string clipPath;
 }
 
 #endif //UNITY_EDITOR
