@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using EzEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(SoundController))]
 public class SoundControllerInspector : Editor
@@ -19,13 +20,15 @@ public class SoundControllerInspector : Editor
 
 		gui.EzHeader("Sukafu Sound Works");
 		
+		EditorGUI.BeginChangeCheck();
 		DrawBmg();
 		DrawSfx();
 		DrawButtons();
 		
-		if (GUI.changed)
+		if (EditorGUI.EndChangeCheck())
 		{
 			EditorUtility.SetDirty(target);
+			EditorSceneManager.MarkAllScenesDirty();
 		}
 	}
 	
