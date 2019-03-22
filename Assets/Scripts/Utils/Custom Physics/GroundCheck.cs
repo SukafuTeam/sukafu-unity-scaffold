@@ -15,7 +15,7 @@ public class GroundCheck : MonoBehaviour
 	/// <summary>The reference object </summary>
     public Transform GroundCheckTransform;
 	/// <summary>The distance between the center of object that the ray will be casted</summary>
-	public float DistanceOffset;
+	public float GroundDistanceOffset;
 	/// <summary> Check if more than one Ray should be cast downwars, and the distance between them and the center one </summary>
 	public float SideCheck;
 	/// <summary>Which layers of physics myst be looked for</summary>
@@ -26,6 +26,8 @@ public class GroundCheck : MonoBehaviour
 	public LayerMask CeilingMask;
 	/// <summary> Transform to fix the direction accordinly with the hit normal </summary>
 	public Transform FixBody;
+	/// <summary> Flag to check for different degrees of slopes, enlarging the search for ground when grounded </summary>
+	public bool ShouldSlope;
 
 	public delegate void OnGroundTouch(float verticalSpeed);
 
@@ -69,8 +71,8 @@ public class GroundCheck : MonoBehaviour
     private bool IsGrounded()
     {
 	    var pos = transform.position;
-	    var origin =  new Vector3(pos.x, pos.y - DistanceOffset , pos.z);	    
-        var distance = origin.y - GroundCheckTransform.position.y + (Grounded? 0.5f : 0f);
+	    var origin =  new Vector3(pos.x, pos.y - GroundDistanceOffset , pos.z);	    
+        var distance = origin.y - GroundCheckTransform.position.y + (Grounded && ShouldSlope ? 0.5f : 0f);
 	    
 	    if (VerticalSpeed > 0)
 	    {
@@ -156,6 +158,11 @@ public class GroundCheck : MonoBehaviour
 			Debug.DrawLine(pos, CeilingCheckTransform.position,	Color.green);
 			return true;
 		}
+		
+		var bodySize = CeilingCheckTransform.position.y - pos.y;
+		var hitPoint = hit.point.y - bodySize;
+		pos = new Vector3(pos.x, hitPoint, pos.z);
+		transform.position = pos;
 		
 		Debug.DrawLine(pos, CeilingCheckTransform.position, Color.red);
 		return false;

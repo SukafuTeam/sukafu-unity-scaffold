@@ -9,15 +9,20 @@ public class WallCheck
 	/// <param name="wallCheck"> The side distance reference object transform</param>
 	/// <param name="wallMask"> Which layers of physics should be checked </param>
 	/// <param name="lookRight"> If the object is looking to move to the right </param>
+	/// <param name="yOffset"> The optional Y offset to shot the ray</param>
 	/// <returns></returns>	
-	public static bool IsFree(ref Vector3 origin,Transform wallCheck, LayerMask wallMask, bool lookRight = true)
+	public static bool IsFree(ref Vector3 origin,Transform wallCheck, LayerMask wallMask, bool lookRight = true, float yOffset=0.0f)
 	{	
 		var distance = wallCheck.position.x + 0.01f - origin.x;
+
+		var rayOrigin = origin;
+		if (Mathf.Abs(yOffset) > 0.01f)
+			rayOrigin.y += yOffset;
 		
-		var hit = Physics2D.Raycast(origin, lookRight ? Vector2.right : Vector2.left, distance, wallMask);
+		var hit = Physics2D.Raycast(rayOrigin, lookRight ? Vector2.right : Vector2.left, distance, wallMask);
 		if (hit.collider == null)
 		{
-			Debug.DrawLine(origin, origin + (lookRight ? Vector3.right : Vector3.left) * distance, Color.green);
+			Debug.DrawLine(rayOrigin, rayOrigin + (lookRight ? Vector3.right : Vector3.left) * distance, Color.green);
 			return true;
 		}
 
@@ -25,7 +30,7 @@ public class WallCheck
 		var hitPoint = lookRight ? hit.point.x - bodySize : hit.point.x + bodySize;
 		origin = new Vector3(hitPoint, origin.y, origin.z);
 		
-		Debug.DrawLine(origin, origin+ (lookRight ? Vector3.right : Vector3.left) * distance, Color.red);
+		Debug.DrawLine(rayOrigin, rayOrigin + (lookRight ? Vector3.right : Vector3.left) * distance, Color.red);
 
 		return false;
 	}	
