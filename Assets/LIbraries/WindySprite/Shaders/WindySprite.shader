@@ -68,7 +68,7 @@
 				float shake = shakeSin * (_ShakeForce * unit.x * multiplier);
 				
 				if(IN.vertex.y > _BottomOffset) {
-				    OUT.vertex.x += bend + shake;
+				    OUT.vertex.x += bend * shake;
 				}
                 
 				OUT.texcoord = IN.texcoord;

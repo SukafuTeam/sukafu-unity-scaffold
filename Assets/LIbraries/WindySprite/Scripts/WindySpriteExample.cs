@@ -4,6 +4,7 @@ using DG.Tweening;
 [RequireComponent(typeof(WindySprite))]
 public class WindySpriteExample : MonoBehaviour
 {
+	public Ease MovementEase = Ease.OutSine;
     public float MoveAmount;
 	private WindySprite _windy;
 	public WindySprite Windy
@@ -36,9 +37,10 @@ public class WindySpriteExample : MonoBehaviour
 
 	public void Move(float distance, float time = 0.6f)
 	{
-		DOTween.To(() => Windy.ShakeOffset, x => Windy.ShakeOffset = x, distance, time/2.0f).SetEase(Ease.OutSine).OnComplete(() =>
+		time = time * Random.Range(0.7f, 1.3f);
+		DOTween.To(() => Windy.ShakeOffset, x => Windy.ShakeOffset = x, distance, time/2.0f).SetEase(MovementEase).OnComplete(() =>
 		{
-			DOTween.To(() => Windy.ShakeOffset, x => Windy.ShakeOffset = x, 0, time/2.0f).SetEase(Ease.OutSine);
+			DOTween.To(() => Windy.ShakeOffset, x => Windy.ShakeOffset = x, 0, time/2.0f).SetEase(MovementEase);
 		});
 	}
 }

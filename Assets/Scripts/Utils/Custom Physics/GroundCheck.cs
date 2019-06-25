@@ -15,7 +15,7 @@ public class GroundCheck : MonoBehaviour
 	/// <summary>The reference object </summary>
     public Transform GroundCheckTransform;
 	/// <summary>The distance between the center of object that the ray will be casted</summary>
-	public float GroundDistanceOffset;
+	public float DistanceOffset;
 	/// <summary> Check if more than one Ray should be cast downwars, and the distance between them and the center one </summary>
 	public float SideCheck;
 	/// <summary>Which layers of physics myst be looked for</summary>
@@ -71,7 +71,7 @@ public class GroundCheck : MonoBehaviour
     private bool IsGrounded()
     {
 	    var pos = transform.position;
-	    var origin =  new Vector3(pos.x, pos.y - GroundDistanceOffset , pos.z);	    
+	    var origin =  new Vector3(pos.x, pos.y - DistanceOffset , pos.z);	    
         var distance = origin.y - GroundCheckTransform.position.y + (Grounded && ShouldSlope ? 0.5f : 0f);
 	    
 	    if (VerticalSpeed > 0)

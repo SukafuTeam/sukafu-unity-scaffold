@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class WindySprite:MonoBehaviour
 {
     public bool IgnoreWind;
     
-    [Range(0f,1f)]
+    [Range(0f,3f)]
     public float ShakeForce = 0.03f;
 
     [Range(0f,5f)]
