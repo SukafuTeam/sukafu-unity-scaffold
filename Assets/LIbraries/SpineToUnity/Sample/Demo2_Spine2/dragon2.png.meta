@@ -1,75 +1,182 @@
 fileFormatVersion: 2
 guid: 9951eb2554f094dd7b227a31629f361d
-timeCreated: 1448985354
-licenseType: Store
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: L_front_leg
-    21300002: L_front_thigh
-    21300004: L_rear_leg
-    21300006: L_wing04
-    21300008: L_wing07
-    21300010: L_wing08
-    21300012: L_wing09
-    21300014: R_front_leg
-    21300016: R_front_thigh
-    21300018: R_rear_leg
-    21300020: R_rear_thigh
-    21300022: R_wing04
-    21300024: chin
-    21300026: front_toeB
-    21300028: rear-toe
-    21300030: tail02
-    21300032: tail04
-    21300034: tail05
-    21300036: tail06
-  serializedVersion: 2
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: L_front_leg
+  - first:
+      213: 21300002
+    second: L_front_thigh
+  - first:
+      213: 21300004
+    second: L_rear_leg
+  - first:
+      213: 21300006
+    second: L_wing04
+  - first:
+      213: 21300008
+    second: L_wing07
+  - first:
+      213: 21300010
+    second: L_wing08
+  - first:
+      213: 21300012
+    second: L_wing09
+  - first:
+      213: 21300014
+    second: R_front_leg
+  - first:
+      213: 21300016
+    second: R_front_thigh
+  - first:
+      213: 21300018
+    second: R_rear_leg
+  - first:
+      213: 21300020
+    second: R_rear_thigh
+  - first:
+      213: 21300022
+    second: R_wing04
+  - first:
+      213: 21300024
+    second: chin
+  - first:
+      213: 21300026
+    second: front_toeB
+  - first:
+      213: 21300028
+    second: rear-toe
+  - first:
+      213: 21300030
+    second: tail02
+  - first:
+      213: 21300032
+    second: tail04
+  - first:
+      213: 21300034
+    second: tail05
+  - first:
+      213: 21300036
+    second: tail06
+  externalObjects: {}
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
+    sRGBTexture: 1
     linearTexture: 0
-    correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
-  generateCubemap: 0
+  generateCubemap: 6
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 8
-  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: 5
   maxTextureSize: 4096
   textureSettings:
-    filterMode: -1
-    aniso: -1
-    mipBias: -1
-    wrapMode: 1
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
-  rGBM: 0
   compressionQuality: 50
-  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
-  buildTargetSettings: []
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: L_front_leg
+    - serializedVersion: 2
+      name: L_front_leg
       rect:
         serializedVersion: 2
         x: 391
@@ -77,9 +184,20 @@ TextureImporter:
         width: 57
         height: 84
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: L_front_thigh
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02305410000000000800000000000000
+      internalID: 21300000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L_front_thigh
       rect:
         serializedVersion: 2
         x: 446
@@ -87,9 +205,20 @@ TextureImporter:
         width: 84
         height: 72
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: L_rear_leg
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22305410000000000800000000000000
+      internalID: 21300002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L_rear_leg
       rect:
         serializedVersion: 2
         x: 888
@@ -97,9 +226,20 @@ TextureImporter:
         width: 132
         height: 168
       alignment: 9
-      pivot: {x: .481060594, y: .5}
+      pivot: {x: 0.4810606, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: L_wing04
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42305410000000000800000000000000
+      internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L_wing04
       rect:
         serializedVersion: 2
         x: 256
@@ -107,9 +247,20 @@ TextureImporter:
         width: 188
         height: 135
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: L_wing07
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62305410000000000800000000000000
+      internalID: 21300006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L_wing07
       rect:
         serializedVersion: 2
         x: 2
@@ -117,9 +268,20 @@ TextureImporter:
         width: 159
         height: 255
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: L_wing08
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82305410000000000800000000000000
+      internalID: 21300008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L_wing08
       rect:
         serializedVersion: 2
         x: 705
@@ -127,9 +289,20 @@ TextureImporter:
         width: 181
         height: 164
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: L_wing09
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2305410000000000800000000000000
+      internalID: 21300010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: L_wing09
       rect:
         serializedVersion: 2
         x: 499
@@ -137,9 +310,20 @@ TextureImporter:
         width: 204
         height: 167
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: R_front_leg
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2305410000000000800000000000000
+      internalID: 21300012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R_front_leg
       rect:
         serializedVersion: 2
         x: 273
@@ -147,9 +331,20 @@ TextureImporter:
         width: 101
         height: 89
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: R_front_thigh
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2305410000000000800000000000000
+      internalID: 21300014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R_front_thigh
       rect:
         serializedVersion: 2
         x: 163
@@ -157,9 +352,20 @@ TextureImporter:
         width: 108
         height: 108
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: R_rear_leg
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03305410000000000800000000000000
+      internalID: 21300016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R_rear_leg
       rect:
         serializedVersion: 2
         x: 273
@@ -167,9 +373,20 @@ TextureImporter:
         width: 116
         height: 100
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: R_rear_thigh
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23305410000000000800000000000000
+      internalID: 21300018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R_rear_thigh
       rect:
         serializedVersion: 2
         x: 163
@@ -177,9 +394,20 @@ TextureImporter:
         width: 91
         height: 148
       alignment: 9
-      pivot: {x: .5, y: .503378391}
+      pivot: {x: 0.5, y: 0.5033784}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: R_wing04
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43305410000000000800000000000000
+      internalID: 21300020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: R_wing04
       rect:
         serializedVersion: 2
         x: 2
@@ -187,9 +415,20 @@ TextureImporter:
         width: 279
         height: 144
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: chin
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63305410000000000800000000000000
+      internalID: 21300022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chin
       rect:
         serializedVersion: 2
         x: 283
@@ -197,9 +436,20 @@ TextureImporter:
         width: 214
         height: 146
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: front_toeB
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83305410000000000800000000000000
+      internalID: 21300024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: front_toeB
       rect:
         serializedVersion: 2
         x: 590
@@ -207,9 +457,20 @@ TextureImporter:
         width: 56
         height: 57
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: rear-toe
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3305410000000000800000000000000
+      internalID: 21300026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rear-toe
       rect:
         serializedVersion: 2
         x: 2
@@ -217,9 +478,20 @@ TextureImporter:
         width: 77
         height: 105
       alignment: 9
-      pivot: {x: .5, y: .519047618}
+      pivot: {x: 0.5, y: 0.5190476}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tail02
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3305410000000000800000000000000
+      internalID: 21300028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tail02
       rect:
         serializedVersion: 2
         x: 151
@@ -227,9 +499,20 @@ TextureImporter:
         width: 120
         height: 95
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tail04
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3305410000000000800000000000000
+      internalID: 21300030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tail04
       rect:
         serializedVersion: 2
         x: 532
@@ -237,9 +520,20 @@ TextureImporter:
         width: 56
         height: 71
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tail05
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04305410000000000800000000000000
+      internalID: 21300032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tail05
       rect:
         serializedVersion: 2
         x: 648
@@ -247,9 +541,20 @@ TextureImporter:
         width: 52
         height: 59
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: tail06
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24305410000000000800000000000000
+      internalID: 21300034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tail06
       rect:
         serializedVersion: 2
         x: 81
@@ -257,9 +562,50 @@ TextureImporter:
         width: 68
         height: 95
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-  spritePackingTag: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44305410000000000800000000000000
+      internalID: 21300036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      R_front_thigh: 21300016
+      L_wing08: 21300010
+      R_rear_leg: 21300018
+      L_wing07: 21300008
+      R_front_leg: 21300014
+      tail04: 21300032
+      L_front_leg: 21300000
+      L_rear_leg: 21300004
+      R_wing04: 21300022
+      tail02: 21300030
+      tail05: 21300034
+      L_wing04: 21300006
+      R_rear_thigh: 21300020
+      chin: 21300024
+      front_toeB: 21300026
+      L_front_thigh: 21300002
+      L_wing09: 21300012
+      rear-toe: 21300028
+      tail06: 21300036
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
