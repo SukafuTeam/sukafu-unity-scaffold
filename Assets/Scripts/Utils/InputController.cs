@@ -1,10 +1,37 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class InputController {
 
     public static float Horizontal
     {
         get { return Input.GetAxis("Horizontal"); }
+    }
+
+    public static Vector2 LeftStick
+    {
+        get
+        {
+            return Gamepad.current == null ? Vector2.zero : Gamepad.current.leftStick.ReadValue();
+        }
+    }
+
+    public static bool MoveRight(float threshold = 0.2f)
+    {
+        var keyHor = InputController.Horizontal;
+        var padHor = InputController.LeftStick.x;
+        return keyHor > threshold || padHor > threshold;
+    }
+    
+    public static bool MoveLeft(float threshold = 0.2f)
+    {
+        var absThreshold = Mathf.Abs(threshold);
+        
+        var keyHor = InputController.Horizontal;
+        var padHor = InputController.LeftStick.x;
+
+        return keyHor < -absThreshold || padHor < -absThreshold;
     }
 	
     public static float Vertical
@@ -14,22 +41,94 @@ public class InputController {
 	
     public static bool Up
     {
-        get { return Input.GetKeyDown(KeyCode.UpArrow); }
+        get
+        {
+            var upArrow = Input.GetKeyDown(KeyCode.UpArrow);
+
+            if (Gamepad.current == null)
+                return upArrow;
+            var gamepadUp = Gamepad.current.dpad.up.isPressed;
+
+            return upArrow || gamepadUp;
+        }
     }
 	
     public static bool Right
     {
-        get { return Input.GetKey(KeyCode.RightArrow); }
+        get
+        {
+            var rightArrow = Input.GetKeyDown(KeyCode.RightArrow);
+
+            if (Gamepad.current == null)
+                return rightArrow;
+            var gamepadRight = Gamepad.current.dpad.right.isPressed;
+
+            return rightArrow || gamepadRight;
+        }
     }
 	
     public static bool Down
     {
-        get { return Input.GetKey(KeyCode.DownArrow); }
+        get
+        {
+            var downArrow = Input.GetKeyDown(KeyCode.DownArrow);
+
+            if (Gamepad.current == null)
+                return downArrow;
+            var gamepadDown = Gamepad.current.dpad.down.isPressed;
+
+            return downArrow || gamepadDown;
+        }
     }
 	
     public static bool Left
     {
-        get { return Input.GetKey(KeyCode.LeftArrow); }
+        get
+        {
+            var leftArrow = Input.GetKeyDown(KeyCode.LeftArrow);
+
+            if (Gamepad.current == null)
+                return leftArrow;
+            var gamepadLeft = Gamepad.current.dpad.left.isPressed;
+
+            return leftArrow || gamepadLeft;
+        }
+    }
+    
+    public static bool Jump
+    {
+        get
+        {
+            var keyJump = Input.GetKey(KeyCode.Z);
+            if (Gamepad.current == null)
+                return keyJump;
+            var gamePadJump = Gamepad.current.buttonSouth.isPressed;
+            return keyJump || gamePadJump;
+        }
+    }
+	
+    public static bool JumpDown
+    {
+        get
+        {
+            var keyJump = Input.GetKeyDown(KeyCode.Z);
+            if (Gamepad.current == null)
+                return keyJump;
+            var gamePadJump = Gamepad.current.buttonSouth.wasPressedThisFrame;
+            return keyJump || gamePadJump;
+        }
+    }
+
+    public static bool DashDown
+    {
+        get
+        {
+            var keyDash = Input.GetKeyDown(KeyCode.X);
+            if (Gamepad.current == null)
+                return keyDash;
+            var gamePadDash = Gamepad.current.buttonWest.wasPressedThisFrame;
+            return keyDash || gamePadDash;
+        }
     }
 
     public static bool W
@@ -65,20 +164,5 @@ public class InputController {
     public static bool Undo
     {
         get { return Input.GetKeyDown(KeyCode.Z); }
-    }
-
-    public static bool Jump
-    {
-        get { return Input.GetButton("Jump"); }
-    }
-	
-    public static bool JumpDown
-    {
-        get { return Input.GetButtonDown("Jump"); }
-    }
-
-    public static bool Dash
-    {
-        get { return Input.GetButtonDown("Dash"); }
     }
 }

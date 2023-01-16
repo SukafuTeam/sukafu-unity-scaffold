@@ -189,7 +189,7 @@ MonoBehaviour:
   SideCheck: 0.4
   GroundMask:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 3328
   CeilingCheckTransform: {fileID: 4797551758826768}
   CeilingMask:
     serializedVersion: 2
@@ -214,13 +214,12 @@ MonoBehaviour:
   WallCheckTransform: {fileID: 4874126039759288}
   WallMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2304
   FreeLeft: 0
   FreeRight: 0
-  WallHugTime: 0
   CutScene: 0
   LookRight: 0
-  MoveSpeed: 4
+  MoveSpeed: 6
   CanMove: 0
   CanMoveTime: 0
   LockedSpeed: 0
@@ -230,25 +229,26 @@ MonoBehaviour:
   DownhillModifier: 1.2
   EnableDash: 1
   Dashing: 0
-  DashSpeed: 10
+  DashSpeed: 12
   DashTime: 0.2
-  JumpForce: 10
+  JumpForce: 20
   EnableDoubleJump: 1
   CoyoteTime: 0.2
   EnableSquishStretch: 1
-  JumpSquishAmount: {x: 0.5, y: 1.2}
-  LandSquishAmount: {x: 1.2, y: 0.5}
+  JumpSquishAmount: {x: 0.8, y: 1.1}
+  LandSquishAmount: {x: 1.1, y: 0.8}
   OnGroundedEvent:
     m_PersistentCalls:
       m_Calls: []
-  EnableWallJump: 0
+  EnableWallJump: 1
   WallJumpLayer:
     serializedVersion: 2
-    m_Bits: 1280
+    m_Bits: 3328
   WallJumpFreeRight: 0
   WallJumpFreeLeft: 0
-  SlidingMaxSpeed: 0
-  WallJumpMoveTime: 0
+  SlidingMaxSpeed: -5
+  WallJumpMoveTime: 0.1
+  WallHugTime: 0.1
   GroundSmoke: {fileID: 0}
   OriginalScale: {x: 0, y: 0, z: 0}
 --- !u!1 &1479797816728888

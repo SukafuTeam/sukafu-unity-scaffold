@@ -23,10 +23,6 @@ public class PlatformController : MonoBehaviour
 	public bool FreeLeft;
 	/// <summary> Control boolean to check if there's something block the way to the left </summary>
 	public bool FreeRight;
-	/// <summary> Variable to determine how long the user can let go of hugging the wall while still being able to wall jump </summary>
-	public float WallHugTime;
-	/// <summary> Internal variable to control wall hug time </summary>
-	private float _currentWallHugTime;
 
 	/// <summary> Can the player wall jump from a right wall? </summary>
 	public bool RightHugging
@@ -115,6 +111,10 @@ public class PlatformController : MonoBehaviour
 	public float SlidingMaxSpeed;
 	/// <summary> How long will the player move horizontally when wall jumping </summary>
 	public float WallJumpMoveTime;
+	/// <summary> Variable to determine how long the user can let go of hugging the wall while still being able to wall jump </summary>
+	public float WallHugTime = 0.1f;
+	/// <summary> Internal variable to control wall hug time </summary>
+	private float _currentWallHugTime;
 	/// <summary> regular fall speed without wall sliding </summary>
 	private float _originalMaxSpeed;
 	
@@ -123,6 +123,22 @@ public class PlatformController : MonoBehaviour
 	/// <summary> Scake to go back to after applying squish and stretch transformations </summary>
 	public Vector3 OriginalScale;
 
+	private bool _movingRight
+	{
+		get
+		{
+			return InputController.MoveRight(0.25f) || InputController.Right;
+		}
+	}
+	private bool _movingLeft
+	{
+		get
+		{
+			return InputController.MoveLeft(-0.25f) || InputController.Left;
+		}
+	}
+	
+	
 	void Start ()
 	{
 		GroundCheck.TouchedGround += OnGrounded;
@@ -190,7 +206,7 @@ public class PlatformController : MonoBehaviour
 		if (!EnableWallJump)
 			return;
 
-		if ((RightHugging && InputController.Horizontal > 0.2f) || (LeftHugging && InputController.Horizontal < -0.2f))
+		if (RightHugging && _movingRight || LeftHugging && _movingLeft)
 			_currentWallHugTime = WallHugTime;
 
 		_currentWallHugTime -= Time.deltaTime;
@@ -252,7 +268,7 @@ public class PlatformController : MonoBehaviour
 		if (_doubleJumping || !_canDash)
 			return pos;
 
-		if (InputController.Dash)
+		if (InputController.DashDown)
 		{
 			if (LeftSliding)
 				LookRight = true;
@@ -294,15 +310,13 @@ public class PlatformController : MonoBehaviour
 
 		if (CutScene)
 			return pos;
-		
-		var hor = InputController.Horizontal;
+
 		var speed = MoveSpeed;
-		
 		var slopeAngle = GroundCheck.LastSlope;
 		var upSlopeModifier = Mathf.InverseLerp(30, 0, Mathf.Abs(slopeAngle));
 		var downSlopeModifier = Mathf.InverseLerp(0, 30, Mathf.Abs(slopeAngle));
 		
-		if(hor > 0.2f)
+		if(_movingRight)
 		{
 			LookRight = true;
 
@@ -320,7 +334,7 @@ public class PlatformController : MonoBehaviour
 				Moving = true;
 			}
 		} 
-		else if(hor < -0.2f)
+		else if(_movingLeft)
 		{
 			LookRight = false;
 
